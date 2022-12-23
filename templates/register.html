@@ -1,0 +1,23 @@
+{% extends "format.html" %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block main %}
+    <div>
+        <div class="ref-form">
+            <div class="reg">
+                <div>
+                    <form action="/register" method="post">
+                        <img src="/static/assets/user2.png" height="200px" width="250px" alt="user_icon" style="display: block;margin: 0 auto;">
+                        <input type="email" id="mail" name="user_email" required autocomplete="off" placeholder="Email">
+                        <input type="password" id="pw" name="user_pw" required autocomplete="off" placeholder="Password">
+                        <label id="tc_link"><input type="checkbox" id="tc" name="tc" required> &nbsp;I agree to the <a href="https://www.gnu.org/licenses/gpl-3.0.txt" target="_blank" style="color:aliceblue">Terms and Conditions</a></label>
+                        <button type="submit" id="submit">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

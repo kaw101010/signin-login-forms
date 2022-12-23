@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+
+*{
+    font-family: "Lexend Deca", "Helvetica", sans-serif;
+}
+
+body{
+    background-image: url('/static/assets/fluid-img.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reg{
+    width: 700px;
+    height: 800px;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    border-radius: 8px;
+}
+
+#mail {
+    margin-top: 40px;
+}
+
+#mail, #pw{
+    height: 30px;
+    width: 400px;
+    display: block;
+    outline: none;
+    font-size: 20px;
+    background: transparent;
+    border: 0;
+    border-bottom: 3px solid aliceblue;
+    color: white;
+    margin-bottom: 50px;
+    padding-bottom: 0.5rem;
+    padding-left: 25px;
+    padding-top: 0.5rem;
+}
+
+#submit{
+    height: 50px;
+    width: 300px;
+    outline-style: ridge;
+    outline-width: 2px;
+    outline-color: aqua;
+    display: block;
+    cursor: pointer;
+    margin: 40px auto 0 auto;
+    border-radius: 20px;
+    background-color: #ffaf7a;
+    font-size: 24px;
+}
+
+input[type='password'], input[type='email']{
+    box-shadow: 0px 0px 5px 2px rgba(255,255,255,.1);
+    
+}
+
+input[type='password']:focus, input[type='email']:focus{
+    box-shadow: 0px 0px 10px 8px rgba(0,0,0,.3);
+}
+
+#tc {
+    height: 18px;
+    width: 18px;
+    position: relative;
+    bottom: 1px;
+    vertical-align: middle;
+}
+
+#tc_link{
+    margin: 0 auto;
+    color: aliceblue;
+}
