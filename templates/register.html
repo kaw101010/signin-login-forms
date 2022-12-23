@@ -8,7 +8,12 @@
     <div>
         <div class="ref-form">
             <div class="reg">
-                <div>
+                {% if success == True %}
+                    <p id="success" style="color: azure;">Registered!</p>
+                {% elif success == False %}:
+                    <p id="failure" style="color:azure;">Not Registered!</p>
+                {% endif %}
+                <div style="display: block;">
                     <form action="/register" method="post">
                         <img src="/static/assets/user2.png" height="200px" width="250px" alt="user_icon" style="display: block;margin: 0 auto;">
                         <input type="email" id="mail" name="user_email" required autocomplete="off" placeholder="Email">
