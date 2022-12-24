@@ -29,7 +29,7 @@ def otpChecker():
             otp_user += request.form.get('otp-'+str(i))
         if code == otp_user:
             # User registered
-            return render_template('register.html', otp_=True, success=True)
+            return render_template('register.html', otp_=False, success=True)
         else:
             return render_template('register.html', otp=True, success=False)
 
