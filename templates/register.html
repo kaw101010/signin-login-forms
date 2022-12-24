@@ -8,8 +8,8 @@
     <div>
         <div class="ref-form">
             <div class="reg">
-                {% if success == True %}
-                    <p id="success" style="color: azure;">Registered!</p>
+                {% if success == True %}<!--Checks if success parameter is True. If true it shows registered-->
+                    <p id="success" style="color: azure;" style="position:relative">Registered!</p>
                 {% elif success == False %}:
                     <p id="failure" style="color:azure;">Not Registered!</p>
                 {% endif %}
@@ -21,6 +21,22 @@
                         <label id="tc_link"><input type="checkbox" id="tc" name="tc" required> &nbsp;I agree to the <a href="https://www.gnu.org/licenses/gpl-3.0.txt" target="_blank" style="color:aliceblue">Terms and Conditions</a></label>
                         <button type="submit" id="submit">Register</button>
                     </form>
+                    {% if otp_ == True %}
+                    <!--Form to check for OTP entered by user-->
+                        <form action="/otp_check" method="post">
+                            <label class="otp-label">We have sent an OTP to your email address.</label>
+                            <label class="otp-label">Please enter the 5-digit OTP below.</label>
+                            <input type="text" required minlength="1" maxlength="1" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" name="otp-1" class="otp-blank">
+                            <input type="text" required minlength="1" maxlength="1" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" name="otp-2" class="otp-blank">
+                            <input type="text" required minlength="1" maxlength="1" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" name="otp-3" class="otp-blank">
+                            <input type="text" required minlength="1" maxlength="1" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" name="otp-4" class="otp-blank">
+                            <input type="text" required minlength="1" maxlength="1" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" name="otp-5" class="otp-blank">
+                            <button type="submit" name="subm" id="otpb">Verify Email</button>
+                        </form>
+                    {% endif %}
+                    {% if otp_ == True %}
+                        <script src="/static/otpFile.js"></script>
+                    {% endif %}
                 </div>
             </div>
         </div>
