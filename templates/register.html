@@ -9,18 +9,27 @@
         <div class="ref-form">
             <div class="reg">
                 {% if success == True %}<!--Checks if success parameter is True. If true it shows registered-->
-                    <p id="success" style="color: azure;" style="position:relative">Registered!</p>
+                    <p id="success" style="color: azure;position:relative;font-size:25px;">Registered!</p>
                 {% elif success == False %}:
-                    <p id="failure" style="color:azure;">Not Registered!</p>
+                    <p id="failure"  style="color: azure;position:relative;font-size:25px;">Incorrect OTP. Please register again.</p>
                 {% endif %}
                 <div style="display: block;">
                     <form action="/register" method="post">
                         <img src="/static/assets/user2.png" height="200px" width="250px" alt="user_icon" style="display: block;margin: 0 auto;">
                         <input type="email" id="mail" name="user_email" required autocomplete="off" placeholder="Email">
-                        <input type="password" id="pw" name="user_pw" required autocomplete="off" placeholder="Password">
+                        <input type="password" id="pw" name="user_pw" required autocomplete="off" placeholder="Password" pattern='^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'>
+                        <div>
+                            <label class="validators" id="minChars">Minimum 8 characters<img src="/static/assets/tick.png" alt="tick mark" width="22px" height="22px" class="correct" id="c1"><img src="/static/assets/cross.png" alt="cross mark" width = "20px" height="20px" class="incorrect" id="ic1"></label>
+                            <label class="validators">A lowercase alphabet<img src="/static/assets/tick.png" alt="tick mark" width="22px" height="22px" class="correct" id="c2"><img src="/static/assets/cross.png" alt="cross mark" width = "20px" height="20px" class="incorrect" id="ic2"></label>
+                            <label class="validators">An uppercase alphabet<img src="/static/assets/tick.png" alt="tick mark" width="22px" height="22px" class="correct" id="c3"><img src="/static/assets/cross.png" alt="cross mark" width = "20px" height="20px" class="incorrect" id="ic3"></label>
+                            <label class="validators">A number from 0 to 9<img src="/static/assets/tick.png" alt="tick mark" width="22px" height="22px" class="correct" id="c4"><img src="/static/assets/cross.png" alt="cross mark" width = "20px" height="20px" class="incorrect" id="ic4"></label>
+                            <label class="validators">At least one of the following special characters:<img src="/static/assets/tick.png" alt="tick mark" width="22px" height="22px" class="correct" id="c5"><img src="/static/assets/cross.png" alt="cross mark" width = "20px" height="20px" class="incorrect" id="ic5"></label>
+                            <label class="chars">#?!@$%^&*-</label>
+                        </div>
                         <label id="tc_link"><input type="checkbox" id="tc" name="tc" required> &nbsp;I agree to the <a href="https://www.gnu.org/licenses/gpl-3.0.txt" target="_blank" style="color:aliceblue">Terms and Conditions</a></label>
                         <button type="submit" id="submit">Register</button>
                     </form>
+                    <script src="/static/form_validation.js"></script>
                     {% if otp_ == True %}
                     <!--Form to check for OTP entered by user-->
                         <form action="/otp_check" method="post">

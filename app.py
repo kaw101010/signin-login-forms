@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from otp_verification import otp_ver, otp
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = '[_=@`*-&2\>!{1#&/d^(?~.'
 
 @app.route('/', methods=['POST','GET'])
 def index():

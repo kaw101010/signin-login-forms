@@ -147,3 +147,37 @@ input[type='password']:focus, input[type='email']:focus{
 input[name="otp-1"]{
     margin-left: 30px;
 }
+
+.validators{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    color: red;
+    font-size: 16px;
+}
+
+.chars{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    color: orange;
+}
+
+.correct{
+    display: inline;
+    vertical-align: bottom;
+    display: none;
+}
+
+.incorrect {
+    display: inline;
+    vertical-align: bottom;
+}
+
+.valid-validators {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    color: #90ee90;
+    font-size: 16px;
+}
