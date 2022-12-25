@@ -185,3 +185,19 @@ input[name="otp-1"]{
 form > div{
     display: none;
 }
+
+#login{
+    color: aliceblue;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#login-link{
+    margin-left: 10px;
+    color:aquamarine;
+}
+
+#login-link:visited {
+    color:aquamarine;
+}

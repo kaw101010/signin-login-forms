@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, flash
 from otp_verification import otp_ver, otp
+from bcrypt import hashpw, checkpw, gensalt
 
 app = Flask(__name__)
 
@@ -13,10 +14,13 @@ def index():
 @app.route('/register', methods=['POST','GET'])
 def register():
     global code
+    global hash
     # Authenticate the user's entered email and password
     if request.method == "POST":
         # Email with OTP link
         email = request.form.get("user_email")
+        hash = hashpw(request.form.get('user_pw').encode('UTF-8'),gensalt())
+        print(hash)
         code = otp_ver(email)
         # To allow user to enter OTP
         return render_template("register.html", otp_ = True)

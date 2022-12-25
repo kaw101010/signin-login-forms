@@ -9,7 +9,7 @@
         <div class="ref-form">
             <div class="reg">
                 {% if success == True %}<!--Checks if success parameter is True. If true it shows registered-->
-                    <p id="success" style="color: azure;position:relative;font-size:25px;">Registered!</p>
+                    <p id="success" style="color: azure;font-size:25px;">You are now registered!</p>
                 {% elif success == False %}:
                     <p id="failure"  style="color: azure;position:relative;font-size:25px;">Incorrect OTP. Please register again.</p>
                 {% endif %}
@@ -29,6 +29,8 @@
                         <label id="tc_link"><input type="checkbox" id="tc" name="tc" required> &nbsp;I agree to the <a href="https://www.gnu.org/licenses/gpl-3.0.txt" target="_blank" style="color:aliceblue">Terms and Conditions</a></label>
                         <button type="submit" id="submit">Register</button>
                     </form>
+                    <!--Login form link-->
+                    <label id="login">Already registered? <a href="" rel="login link" id="login-link">Login here</a></label>
                     <script src="/static/form_validation.js"></script>
                     {% if otp_ == True %}
                     <!--Form to check for OTP entered by user-->
