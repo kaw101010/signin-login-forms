@@ -13,6 +13,9 @@
                 {% elif success == False %}:
                     <p id="failure"  style="color: azure;position:relative;font-size:25px;">Incorrect OTP. Please register again.</p>
                 {% endif %}
+                {% if email_unique == True %} <!--Checks if email is unique to ensure that the account does not exist-->
+                    <p id="success" style="color: azure;font-size:25px;">Account already exists! Please login in.</p>
+                {% endif %}
                 <div style="display: block;">
                     <form action="/register" method="post">
                         <img src="/static/assets/user2.png" height="200px" width="250px" alt="user_icon" style="display: block;margin: 0 auto;">

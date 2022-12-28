@@ -26,6 +26,13 @@ def register():
         # Email with OTP link
         email = request.form.get("user_email")
         hash = hashpw(request.form.get('user_pw').encode('UTF-8'),gensalt())
+        # Check if email entered by user already exists.
+        existing_email = 'SELECT email FROM users WHERE email=%s'
+        val = (email,)
+        cursor.execute(existing_email, val)
+        result = cursor.fetchall()
+        if len(result) > 0:
+            return render_template('register.html', email_unique = True)
         code = otp_ver(email)
         # To allow user to enter OTP
         return render_template("register.html", otp_ = True)
