@@ -25,6 +25,7 @@ def register():
     if request.method == "POST":
         # Email with OTP link
         email = request.form.get("user_email")
+        # Encrypt the password with Blowfish encryption algorithm
         hash = hashpw(request.form.get('user_pw').encode('UTF-8'),gensalt())
         # Check if email entered by user already exists.
         existing_email = 'SELECT email FROM users WHERE email=%s'
@@ -32,7 +33,7 @@ def register():
         cursor.execute(existing_email, val)
         result = cursor.fetchall()
         if len(result) > 0:
-            return render_template('register.html', email_unique = True)
+            return render_template('register.html', email_unique = False)
         code = otp_ver(email)
         # To allow user to enter OTP
         return render_template("register.html", otp_ = True)

@@ -27,4 +27,5 @@ def otp_ver(mail):
     # Message sent
     server.send_message(msg)
     server.quit()
+    # Return the correct OTP
     return code
