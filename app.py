@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, redirect
 from otp_verification import otp_ver, otp
 from bcrypt import hashpw, checkpw, gensalt
 import mysql.connector as msc
@@ -14,7 +14,7 @@ cursor = connection.cursor()
 @app.route('/', methods=['POST','GET'])
 def index():
     if request.method == "GET":
-        return render_template("register.html")
+        return redirect('/login')
 
 @app.route('/register', methods=['POST','GET'])
 def register():
@@ -37,6 +37,8 @@ def register():
         code = otp_ver(email)
         # To allow user to enter OTP
         return render_template("register.html", otp_ = True)
+    else:
+        return render_template("register.html")
 
 @app.route('/otp_check', methods=['POST','GET'])
 def otpChecker():
@@ -58,3 +60,16 @@ def otpChecker():
         else:
             return render_template('register.html', otp=True, success=False)
 
+@app.route('/login', methods = ['POST','GET'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    else:
+        info_query = 'SELECT email, pwhash FROM users;'
+        cursor.execute(info_query)
+        # Check whether user is already registered by matching email and password
+        info = cursor.fetchall()
+        for i in info:
+            if i[0] == request.form.get('user_email') and checkpw(request.form.get('user_pw').encode('utf-8'),i[1].encode('UTF-8')):
+                return redirect('/')
+        return render_template('login.html',fail = True)

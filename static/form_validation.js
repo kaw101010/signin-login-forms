@@ -7,9 +7,8 @@ document.querySelector('#pw').addEventListener('focusout', () => {
 });
 
 
-document.querySelector("#pw").addEventListener('keyup', function (e){ // Check each time the user presses a key
+document.querySelector("#pw").addEventListener('keyup', function (){ // Check each time the user presses a key
     let pw = document.querySelector('#pw').value
-    let tc = document.querySelector('#tc').checked
     if (pw.length >= 8){ // Checks for length of password
         document.querySelector('#ic1').style.display='none';
         document.querySelector('#c1').style.display = 'inline';

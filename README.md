@@ -20,5 +20,6 @@ Run this project by running ```flask run``` in the project directory.
 
 ## Features
 * You can register on the website using your email and a password
+* Password Validation is also done to ensure that the password strength is high.
 * An email containing an OTP will be sent to your email address to authenticate your email address.
 * You cannot re-register on the website with the same email address.
