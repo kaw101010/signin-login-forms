@@ -14,7 +14,7 @@ cursor = connection.cursor()
 @app.route('/', methods=['POST','GET'])
 def index():
     if request.method == "GET":
-        return redirect('/login')
+        return redirect('/register')
 
 @app.route('/register', methods=['POST','GET'])
 def register():
@@ -71,5 +71,7 @@ def login():
         info = cursor.fetchall()
         for i in info:
             if i[0] == request.form.get('user_email') and checkpw(request.form.get('user_pw').encode('utf-8'),i[1].encode('UTF-8')):
-                return redirect('/')
+                # Show user that he is logged in
+                return render_template('register.html', logged_in = True)
+        # Show user that he is not logged in
         return render_template('login.html',fail = True)
