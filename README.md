@@ -14,7 +14,7 @@ Validated emails by sending OTPs using **SMTP** protocol.
 ## Setup
 To run this project, clone this repository and navigate to the project directory.
 
-Then install the required libraries.
+Then run ```pip install -r requirements.txt``` to install the required Python dependencies.
 
 Run this project by running ```python -m flask run``` in the project directory.
 
