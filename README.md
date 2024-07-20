@@ -16,6 +16,7 @@ To run this project, clone this repository and navigate to the project directory
 
 Then run ```pip install -r requirements.txt``` to install the required Python dependencies.
 
+Fill in the details of your email and your SQL account in the ```config.py``` file.
 Run this project by running ```python -m flask run``` in the project directory.
 
 ## Features
