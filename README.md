@@ -7,7 +7,7 @@
 
 
 ## Description
-Sign Up and Login forms made with **HTML**, **CSS** and **JavaScript**. Implemented APIs in the back-end with **Flask**.
+Sign Up and Login forms made with **HTML**, **CSS** and **JavaScript**. Implemented APIs in the back-end with **Flask** and use **jinja** for html templates.
 Also used **SQL** to maintain a database of registered users.
 Validated emails by sending OTPs using **SMTP** protocol.
 
