@@ -1,13 +1,14 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from otp_verification import otp_ver, otp
 from bcrypt import hashpw, checkpw, gensalt
 import mysql.connector as msc
+from config import mysql_password, db, user_name
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '[_=@`*-&2\>!{1#&/d^(?~.'
 # Initiate the SQL connection
-connection = msc.connect(host = "localhost", user='root', passwd="Krish@999", database='registration',auth_plugin='mysql_native_password')
+connection = msc.connect(host = "localhost", user = user_name, passwd = mysql_password, database=db, auth_plugin='mysql_native_password')
 cursor = connection.cursor()
 
 
@@ -18,15 +19,14 @@ def index():
 
 @app.route('/register', methods=['POST','GET'])
 def register():
-    global code
-    global hash
-    global email
     # Authenticate the user's entered email and password
     if request.method == "POST":
         # Email with OTP link
         email = request.form.get("user_email")
+        session['email'] = email
         # Encrypt the password with Blowfish encryption algorithm
         hash = hashpw(request.form.get('user_pw').encode('UTF-8'),gensalt())
+        session['hash'] = hash
         # Check if email entered by user already exists.
         existing_email = 'SELECT email FROM users WHERE email=%s'
         val = (email,)
@@ -35,6 +35,7 @@ def register():
         if len(result) > 0:
             return render_template('register.html', email_unique = False)
         code = otp_ver(email)
+        session['code'] = code
         # To allow user to enter OTP
         return render_template("register.html", otp_ = True)
     else:
@@ -48,9 +49,9 @@ def otpChecker():
         # Check for OTP entered by user
         for i in range(1, num_digits_otp+1):
             otp_user += request.form.get('otp-'+str(i))
-        if code == otp_user:
+        if session['code'] == otp_user:
             # User registered
-            values = (email, hash)
+            values = (session['email'], session['hash'])
             # Insert the user records into SQL table
             q = 'INSERT INTO users (email, pwhash) VALUES (%s, %s);'
             cursor.execute(q, values)

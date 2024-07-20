@@ -1,7 +1,5 @@
 # Sign Up and Login Form 
 
-#### (Project in Progress)
-
 ## Table of Contents
 * [Description](#description)
 * [Setup](#setup)
@@ -9,12 +7,14 @@
 
 
 ## Description
-Sign Up and Login forms made with **HTML**, **CSS** and **JavaScript**. Implemented a back-end with **Flask**. Also used **SQL** to maintain a database of registered users.
+Sign Up and Login forms made with **HTML**, **CSS** and **JavaScript**. Implemented APIs in the back-end with **Flask**.
+Also used **SQL** to maintain a database of registered users.
+Validated emails by sending OTPs using **SMTP** protocol.
 
 ## Setup
 To run this project, clone this repository and navigate to the project directory.
 
-Then run ```pip install -r requirements.txt``` to install the required Python dependencies.
+Then install the required libraries.
 
 Run this project by running ```python -m flask run``` in the project directory.
 
